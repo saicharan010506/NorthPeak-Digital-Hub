@@ -1,1 +1,2 @@
 - [NorthPeak visual direction](northpeak-visual-direction.md) — NorthPeak uses a dark, editorial luxury SaaS direction with restrained violet glow and spacious layouts.
+- [GitHub push authorization](github-push.md) — An external origin also needs a GitHub account linked to the current Replit identity.
