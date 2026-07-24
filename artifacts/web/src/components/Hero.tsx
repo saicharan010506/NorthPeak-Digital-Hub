@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Menu, X, Play, Sparkles, TrendingUp, MousePointer2 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -12,11 +12,13 @@ const links = [
 
 export function Hero() {
   const [open, setOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const px = useSpring(useTransform(x, [-800, 800], [-12, 12]), { stiffness: 80, damping: 25 });
   const py = useSpring(useTransform(y, [-600, 600], [-10, 10]), { stiffness: 80, damping: 25 });
   const handleMove = (event: React.MouseEvent<HTMLElement>) => {
+    if (prefersReducedMotion) return;
     x.set(event.clientX - window.innerWidth / 2);
     y.set(event.clientY - window.innerHeight / 2);
   };
@@ -53,7 +55,7 @@ export function Hero() {
               <a data-testid="button-view-work" href="#work" className="np-outline-focus group inline-flex items-center justify-center gap-3 rounded-full border border-[var(--np-line)] px-5 py-3.5 text-sm font-bold text-[var(--np-white)] transition-colors hover:border-[var(--np-purple)] hover:bg-white/[.04]">View Our Work <Play className="h-3.5 w-3.5 fill-current" /></a>
             </div>
           </motion.div>
-          <motion.div style={{ x: px, y: py }} initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .9 }} className="relative mx-auto aspect-square w-full max-w-[490px]">
+           <motion.div style={prefersReducedMotion ? undefined : { x: px, y: py }} initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .9 }} className="relative mx-auto aspect-square w-full max-w-[490px]">
             <div className="absolute inset-[12%] rounded-full border border-[var(--np-purple)]/25" />
             <div className="absolute inset-[20%] rounded-full border border-dashed border-[var(--np-violet)]/30 motion-safe:animate-[spin_30s_linear_infinite]" />
             <div className="absolute inset-[27%] rounded-[42%_58%_54%_46%/45%_38%_62%_55%] bg-gradient-to-br from-[var(--np-violet)]/80 via-[var(--np-purple)]/35 to-transparent blur-[2px] motion-safe:animate-[np-float_8s_ease-in-out_infinite]" />

@@ -9,7 +9,7 @@ const reasons = [
 ] as const;
 
 export function WhyChooseUs() {
-  return <section id="why" className="np-section bg-[var(--np-surface)] text-[var(--np-white)]">
+  return <section id="why" className="np-lazy-section np-section bg-[var(--np-surface)] text-[var(--np-white)]">
     <div className="np-container grid gap-14 lg:grid-cols-[.78fr_1.22fr] lg:gap-24">
       <div><p className="np-eyebrow mb-4">Why NorthPeak</p><h2 className="np-display max-w-lg text-5xl font-extrabold leading-[.94] tracking-[-.07em] md:text-7xl">Good work is a <span className="np-gradient-text">growth lever.</span></h2><p className="mt-7 max-w-sm text-base leading-relaxed text-[var(--np-slate)]">You don&apos;t need another vendor. You need a partner who can see the mountain, map the route, and make the climb worth it.</p><a data-testid="link-approach" href="#contact" className="np-arrow-link np-outline-focus mt-8 rounded">Our approach <ArrowUpRight className="h-4 w-4" /></a></div>
       <div className="grid gap-3 sm:grid-cols-2">

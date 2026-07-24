@@ -1,0 +1,61 @@
+Do NOT redesign the website or change its premium UI.
+
+Your task is ONLY to optimize this existing React + Vite + Tailwind CSS website for Google Lighthouse.
+
+Current Lighthouse Scores:
+- Performance: 60
+- Accessibility: 84
+- Best Practices: 100
+- SEO: 100
+
+Goal:
+- Performance: 90+
+- Accessibility: 95+
+- Best Practices: 100
+- SEO: 100
+
+Apply these optimizations:
+
+1. Performance
+- Remove unused JavaScript.
+- Reduce unnecessary re-renders.
+- Lazy-load all images below the fold.
+- Convert images to WebP where possible.
+- Add width and height attributes to all images.
+- Minify CSS and JavaScript.
+- Use dynamic imports for heavy components if appropriate.
+- Optimize Framer Motion animations so they only run when elements enter the viewport.
+- Reduce animation complexity.
+- Remove unnecessary libraries.
+- Reduce render-blocking resources.
+- Improve Largest Contentful Paint (LCP).
+- Reduce First Contentful Paint (FCP).
+- Reduce Total Blocking Time (TBT).
+- Optimize font loading using font-display: swap and preload only necessary fonts.
+- Reduce DOM size if possible.
+- Keep CLS at 0.
+
+2. Accessibility
+- Remove invalid ARIA attributes.
+- Add proper aria-labels where needed.
+- Fix all color contrast issues.
+- Ensure links are distinguishable without relying only on color.
+- Remove user-scalable="no" from the viewport meta tag.
+- Ensure every input has a proper label.
+- Ensure heading hierarchy is correct (H1 → H2 → H3).
+- Improve keyboard navigation and focus states.
+
+3. SEO
+- Keep the existing SEO score of 100.
+- Do not remove title, meta description, or semantic HTML.
+
+4. Code Quality
+- Keep the same layout, content, animations, and design.
+- Refactor only where needed for better performance.
+- Do not remove sections or visual elements.
+- Preserve responsiveness and premium UI.
+
+After optimization:
+- Explain every change you made.
+- Estimate how each change improves Lighthouse.
+- Ensure the website still looks identical but loads faster and scores higher.

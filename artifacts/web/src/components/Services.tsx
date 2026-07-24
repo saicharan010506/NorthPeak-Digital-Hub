@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, BarChart3, Code2, Gauge, Layers3, Palette, Search, Wrench } from 'lucide-react';
+import { ArrowUpRight, Code2, Gauge, Layers3, Palette, Search, Wrench } from 'lucide-react';
 
 const services = [
   ['01', 'Website Development', 'High-performing digital homes built around your sharpest business goals.', Code2],
@@ -11,7 +11,7 @@ const services = [
 ] as const;
 
 export function Services() {
-  return <section id="services" className="np-section bg-[var(--np-bg)] text-[var(--np-white)]">
+  return <section id="services" className="np-lazy-section np-section bg-[var(--np-bg)] text-[var(--np-white)]">
     <div className="np-container">
       <div className="mb-14 grid gap-6 md:grid-cols-[1fr_340px] md:items-end">
         <div><p className="np-eyebrow mb-4">Capabilities</p><h2 className="np-display max-w-2xl text-5xl font-extrabold leading-[.96] tracking-[-.065em] md:text-7xl">Everything your <span className="text-[var(--np-purple)]">next move</span> needs.</h2></div>

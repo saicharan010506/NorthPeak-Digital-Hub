@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -97,6 +96,7 @@
 .np-arrow-link:hover svg { transform: translate(3px, -3px); }
 .np-section-line { border-top: 1px solid var(--np-soft-line); }
 .np-logo-mark { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: .7rem; background: var(--np-violet); color: var(--np-white); font-family: 'Manrope', sans-serif; font-size: .8rem; font-weight: 800; box-shadow: 0 0 25px rgba(109,93,254,.3); }
+.np-lazy-section { content-visibility: auto; contain-intrinsic-size: 0 760px; }
 
 @keyframes np-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
 @keyframes np-pulse { 0%,100% { opacity: .45; transform: scale(1); } 50% { opacity: .7; transform: scale(1.08); } }
