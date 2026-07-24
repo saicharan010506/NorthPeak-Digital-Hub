@@ -1,25 +1,11 @@
 import { ArrowUpRight, Check } from 'lucide-react';
 
 const plans = [
-  { name: 'Starter', price: '$4,800', note: 'For a focused first impression.', features: ['Conversion-led landing page', 'Responsive UI design', 'Technical SEO setup', '2 weeks post-launch support'], tone: 'paper' },
-  { name: 'Professional', price: '$9,600', note: 'For teams ready to grow with intent.', features: ['Multi-page marketing website', 'Custom design system', 'CMS implementation', 'Analytics & conversion tracking', '4 weeks post-launch support'], tone: 'lime', popular: true },
-  { name: 'Enterprise', price: 'Let’s talk', note: 'For complex products and bigger peaks.', features: ['Full digital experience strategy', 'Advanced integrations', 'E-commerce or web application', 'Dedicated senior team', 'Ongoing optimization partner'], tone: 'ink' },
+  { name: 'Starter', price: '$4,800', note: 'For a focused first impression.', features: ['Conversion-led landing page', 'Responsive UI design', 'Technical SEO setup', '2 weeks post-launch support'] },
+  { name: 'Growth', price: '$9,600', note: 'For teams ready to grow with intent.', features: ['Multi-page marketing website', 'Custom design system', 'CMS implementation', 'Analytics & conversion tracking', '4 weeks post-launch support'], popular: true },
+  { name: 'Enterprise', price: 'Let’s talk', note: 'For complex products and bigger peaks.', features: ['Full digital experience strategy', 'Advanced integrations', 'E-commerce or web application', 'Dedicated senior team', 'Ongoing optimization partner'] },
 ];
 
 export function Pricing() {
-  return (
-    <section id="pricing" className="np-section bg-[var(--np-ink)] text-[var(--np-paper)]">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="mb-16"><p className="np-mono mb-4 text-xs uppercase tracking-[.25em] text-[var(--np-lime)]">Investment</p><h2 className="np-display max-w-2xl text-5xl font-semibold leading-[.93] tracking-[-.05em] md:text-7xl">A better website pays for itself.</h2></div>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {plans.map((plan) => <article key={plan.name} className={`relative flex min-h-[500px] flex-col p-7 md:p-9 ${plan.tone === 'lime' ? 'bg-[var(--np-lime)] text-[var(--np-ink)]' : plan.tone === 'ink' ? 'border border-[var(--np-paper)]/25' : 'bg-[var(--np-paper)] text-[var(--np-ink)]'}`}>
-            {plan.popular && <span className="np-mono absolute right-5 top-5 rounded-full bg-[var(--np-coral)] px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-[var(--np-ink)]">Most Popular</span>}
-            <p className="np-mono text-xs uppercase tracking-[.2em] opacity-60">{plan.name}</p><p className="mt-8 text-sm opacity-65">{plan.note}</p><div className="np-display mt-3 text-5xl font-semibold tracking-[-.06em]">{plan.price}</div>
-            <ul className="mt-10 space-y-4 border-t border-current/15 pt-7">{plan.features.map((feature) => <li key={feature} className="flex items-start gap-3 text-sm"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--np-coral)]" />{feature}</li>)}</ul>
-            <a data-testid={`button-plan-${plan.name.toLowerCase()}`} href="#contact" className="np-outline-focus group mt-auto flex items-center justify-between border-b border-current/30 pb-3 text-sm font-bold">Start a conversation <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></a>
-          </article>)}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="pricing" className="np-section bg-[var(--np-bg)] text-[var(--np-white)]"><div className="np-container"><div className="mb-14"><p className="np-eyebrow mb-4">Investment</p><h2 className="np-display max-w-2xl text-5xl font-extrabold leading-[.96] tracking-[-.07em] md:text-7xl">A better website <span className="text-[var(--np-purple)]">pays for itself.</span></h2></div><div className="grid gap-4 lg:grid-cols-3">{plans.map((plan) => <article key={plan.name} className={`relative flex min-h-[470px] flex-col rounded-3xl border p-7 md:p-8 ${plan.popular ? 'border-[var(--np-violet)] bg-[var(--np-violet)] text-white shadow-[0_20px_70px_rgba(109,93,254,.18)]' : 'border-[var(--np-soft-line)] bg-[var(--np-surface)]'}`}>{plan.popular && <span className="absolute right-6 top-6 rounded-full bg-white/15 px-3 py-1 text-[9px] font-bold uppercase tracking-[.15em]">Most popular</span>}<p className={`text-xs font-bold uppercase tracking-[.2em] ${plan.popular ? 'text-white/65' : 'text-[var(--np-purple)]'}`}>{plan.name}</p><p className={`mt-8 text-sm ${plan.popular ? 'text-white/70' : 'text-[var(--np-slate)]'}`}>{plan.note}</p><div className="np-display mt-3 text-5xl font-extrabold tracking-[-.07em]">{plan.price}</div><ul className={`mt-10 space-y-4 border-t pt-7 ${plan.popular ? 'border-white/20' : 'border-[var(--np-line)]'}`}>{plan.features.map((feature) => <li key={feature} className="flex items-start gap-3 text-sm"><Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.popular ? 'text-white' : 'text-[var(--np-purple)]'}`} />{feature}</li>)}</ul><a data-testid={`button-plan-${plan.name.toLowerCase()}`} href="#contact" className={`np-outline-focus group mt-auto flex items-center justify-between border-b pb-3 text-sm font-bold ${plan.popular ? 'border-white/40' : 'border-[var(--np-line)]'}`}>Start a conversation <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></a></article>)}</div></div></section>;
 }

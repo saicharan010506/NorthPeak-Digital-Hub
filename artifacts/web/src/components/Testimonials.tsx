@@ -2,28 +2,11 @@ import { motion } from 'framer-motion';
 import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
-  { initials: 'AM', name: 'Avery Morgan', company: 'Luma Health', review: 'NorthPeak gave us the clarity to say what we do, and the confidence to say it loudly. In six weeks, the site felt like our best salesperson.', color: 'bg-[var(--np-coral)]' },
-  { initials: 'JK', name: 'Jules Kim', company: 'Field Notes Studio', review: 'They bring strategic thinking without the theater. Every decision was considered, every detail shipped, and our enquiries doubled after launch.', color: 'bg-[var(--np-lime)]' },
-  { initials: 'RS', name: 'Rowan Shah', company: 'Orbit Commerce', review: 'The rare team that can talk conversion rates in the morning and kerning in the afternoon. We felt understood from day one.', color: 'bg-[var(--np-sky)]' },
+  { initials: 'AM', name: 'Avery Morgan', role: 'VP Marketing', company: 'Luma Health', review: 'NorthPeak gave us the clarity to say what we do, and the confidence to say it loudly. In six weeks, the site felt like our best salesperson.', tone: 'from-[#7659d9] to-[#b29eff]' },
+  { initials: 'JK', name: 'Jules Kim', role: 'Founder', company: 'Field Notes Studio', review: 'They bring strategic thinking without the theater. Every decision was considered, every detail shipped, and our enquiries doubled after launch.', tone: 'from-[#2f667e] to-[#9bc7d0]' },
+  { initials: 'RS', name: 'Rowan Shah', role: 'CEO', company: 'Orbit Commerce', review: 'The rare team that can talk conversion rates in the morning and kerning in the afternoon. We felt understood from day one.', tone: 'from-[#75435f] to-[#d79ab0]' },
 ];
 
 export function Testimonials() {
-  return (
-    <section id="testimonials" className="np-section bg-[var(--np-paper)] text-[var(--np-ink)]">
-      <div className="mx-auto max-w-[1280px]">
-        <div className="mb-16 flex items-end justify-between gap-6">
-          <div><p className="np-mono mb-4 text-xs uppercase tracking-[.25em] text-[var(--np-coral)]">In their words</p><h2 className="np-display text-5xl font-semibold leading-[.93] tracking-[-.05em] md:text-7xl">Proof, not promises.</h2></div>
-          <Quote className="hidden h-16 w-16 stroke-[1] text-[var(--np-ink)]/20 md:block" />
-        </div>
-        <div className="grid gap-5 lg:grid-cols-3">
-          {testimonials.map((item, i) => (
-            <motion.figure key={item.name} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * .1 }} className="flex min-h-[350px] flex-col justify-between border border-[var(--np-line)] p-7 md:p-9">
-              <div><div className="mb-7 flex gap-1" aria-label="5 out of 5 stars">{[1, 2, 3, 4, 5].map((star) => <Star key={star} className="h-4 w-4 fill-[var(--np-coral)] text-[var(--np-coral)]" />)}</div><blockquote className="np-display text-2xl font-medium leading-tight tracking-[-.03em]">“{item.review}”</blockquote></div>
-              <figcaption className="mt-10 flex items-center gap-3"><div aria-hidden="true" className={`grid h-11 w-11 place-items-center rounded-full text-xs font-bold ${item.color}`}>{item.initials}</div><div><div className="text-sm font-bold" data-testid={`text-testimonial-${i}`}>{item.name}</div><div className="np-mono text-[10px] uppercase tracking-wider text-[var(--np-ink)]/50">{item.company}</div></div></figcaption>
-            </motion.figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="testimonials" className="np-section bg-[var(--np-surface)] text-[var(--np-white)]"><div className="np-container"><div className="mb-12 flex items-end justify-between"><div><p className="np-eyebrow mb-4">Client notes</p><h2 className="np-display text-5xl font-extrabold leading-[.96] tracking-[-.07em] md:text-7xl">Proof, not <span className="np-gradient-text">promises.</span></h2></div><Quote className="hidden h-14 w-14 stroke-[1] text-[var(--np-purple)]/40 md:block" /></div><div className="flex snap-x gap-4 overflow-x-auto pb-3 lg:grid lg:grid-cols-3 lg:overflow-visible">{testimonials.map((item, i) => <motion.figure key={item.name} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * .1 }} className="np-glass flex min-h-[365px] min-w-[calc(100vw-3rem)] snap-start flex-col justify-between rounded-3xl p-7 md:min-w-[370px] md:p-8 lg:min-w-0"><div><div className="mb-7 flex gap-1" aria-label="5 out of 5 stars">{[1, 2, 3, 4, 5].map((star) => <Star key={star} className="h-3.5 w-3.5 fill-[var(--np-purple)] text-[var(--np-purple)]" />)}</div><blockquote className="np-display text-xl font-semibold leading-[1.15] tracking-[-.035em]">“{item.review}”</blockquote></div><figcaption className="mt-10 flex items-center gap-3"><div role="img" aria-label={`${item.name} profile placeholder`} className={`grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br ${item.tone} text-xs font-bold text-white`}>{item.initials}</div><div><div className="text-sm font-bold" data-testid={`text-testimonial-${i}`}>{item.name}</div><div className="mt-0.5 text-xs text-[var(--np-slate)]">{item.role} · {item.company}</div></div></figcaption></motion.figure>)}</div></div></section>;
 }

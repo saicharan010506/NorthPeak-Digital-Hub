@@ -1,0 +1,431 @@
+You are an award-winning frontend engineer and product designer.
+
+Build a premium, world-class agency website for a fictional company called "NorthPeak Digital."
+
+The final result should feel comparable to Linear.app, Framer.com, Raycast.com, Vercel.com, and Stripe.com—not a generic Bootstrap template.
+
+GOAL:
+Create a website that looks modern enough to impress senior frontend developers and design recruiters.
+
+---------------------------------------------------
+TECH STACK
+---------------------------------------------------
+
+React + Vite
+Tailwind CSS
+Framer Motion
+React Icons
+Lucide Icons
+
+No Bootstrap.
+No Material UI.
+No Chakra.
+
+Write reusable React components.
+
+---------------------------------------------------
+DESIGN STYLE
+---------------------------------------------------
+
+Minimal
+Luxury
+Elegant
+Editorial
+Lots of whitespace
+Rounded corners (18–24px)
+Glassmorphism used sparingly
+Soft shadows
+Modern gradients
+Beautiful typography
+Micro interactions everywhere
+
+Dark theme by default.
+
+Color palette:
+
+Background:
+#07070A
+
+Surface:
+#111216
+
+Primary:
+#6D5DFE
+
+Accent:
+#9F7AEA
+
+Text:
+#F8FAFC
+
+Secondary text:
+#94A3B8
+
+Use subtle glowing gradients.
+
+Never use bright rainbow colors.
+
+---------------------------------------------------
+TYPOGRAPHY
+---------------------------------------------------
+
+Use Inter or Manrope.
+
+Hero headline:
+72px desktop
+44px tablet
+34px mobile
+
+Use bold typography with excellent spacing.
+
+---------------------------------------------------
+LAYOUT
+---------------------------------------------------
+
+Maximum width:
+1280px
+
+Large spacing between sections.
+
+Every section should feel premium.
+
+---------------------------------------------------
+SECTIONS
+---------------------------------------------------
+
+1. Hero
+
+Large headline
+
+"Websites That Feel Premium.
+Performance That Converts."
+
+Supporting paragraph.
+
+Two CTA buttons
+
+Book Strategy Call
+
+View Our Work
+
+Animated background using blurred gradient blobs.
+
+Floating UI cards.
+
+Mouse parallax.
+
+Scroll indicator.
+
+Entrance animations.
+
+---------------------------------------------------
+
+2. Trusted By
+
+Create a row of grayscale client logos.
+
+Use fictional brands.
+
+Animate on hover.
+
+---------------------------------------------------
+
+3. Services
+
+Six premium cards.
+
+Each includes
+
+Large icon
+
+Title
+
+Description
+
+Arrow icon
+
+Hover lift
+
+Glow border
+
+Services:
+
+Website Development
+
+Brand Identity
+
+UI/UX Design
+
+SEO
+
+Performance Optimization
+
+Ongoing Support
+
+---------------------------------------------------
+
+4. Why NorthPeak
+
+Four feature blocks.
+
+Fast Delivery
+
+Senior Designers
+
+Performance Focused
+
+Transparent Communication
+
+Include elegant icons.
+
+---------------------------------------------------
+
+5. Selected Work
+
+Three portfolio cards.
+
+Each card has
+
+Large image placeholder
+
+Project name
+
+Category
+
+View Case Study button
+
+Hover zoom animation.
+
+---------------------------------------------------
+
+6. Testimonials
+
+Three glass cards.
+
+Client image
+
+5 stars
+
+Review
+
+Company
+
+Animated carousel on mobile.
+
+---------------------------------------------------
+
+7. Pricing
+
+Three pricing cards.
+
+Starter
+
+Growth
+
+Enterprise
+
+Highlight Growth plan.
+
+Beautiful pricing table.
+
+Animated hover.
+
+---------------------------------------------------
+
+8. FAQ
+
+Accordion.
+
+Smooth animations.
+
+---------------------------------------------------
+
+9. Contact
+
+Modern split layout.
+
+Left:
+
+Headline
+
+Email
+
+Phone
+
+Location
+
+Right:
+
+Glass contact form.
+
+Fields:
+
+Name
+
+Email
+
+Company
+
+Phone
+
+Message
+
+Client-side validation.
+
+Success state animation.
+
+---------------------------------------------------
+
+10. Footer
+
+Beautiful multi-column footer.
+
+Quick Links
+
+Services
+
+Social Links
+
+Newsletter input
+
+Include this exact credit:
+
+Built for Digital Heroes Training Task
+
+The words "Digital Heroes" must link to
+
+https://digitalheroesco.com
+
+---------------------------------------------------
+ANIMATIONS
+---------------------------------------------------
+
+Use Framer Motion.
+
+Fade in on scroll.
+
+Slide animations.
+
+Button hover animations.
+
+Card hover.
+
+Image zoom.
+
+Floating hero cards.
+
+Smooth scrolling.
+
+---------------------------------------------------
+RESPONSIVE
+---------------------------------------------------
+
+Perfect on
+
+360px
+
+768px
+
+1024px
+
+1440px
+
+No horizontal scrolling.
+
+---------------------------------------------------
+ACCESSIBILITY
+---------------------------------------------------
+
+Semantic HTML
+
+ARIA labels
+
+Keyboard navigation
+
+Focus states
+
+Alt text
+
+Proper heading hierarchy
+
+High color contrast
+
+---------------------------------------------------
+PERFORMANCE
+---------------------------------------------------
+
+Optimize for Lighthouse 90+
+
+Lazy-load non-critical images
+
+Use SVG icons
+
+No unnecessary JavaScript
+
+Optimize animations
+
+No layout shifts
+
+---------------------------------------------------
+PROJECT STRUCTURE
+
+src/
+
+components/
+
+Hero.jsx
+
+TrustedBy.jsx
+
+Services.jsx
+
+WhyUs.jsx
+
+Portfolio.jsx
+
+Testimonials.jsx
+
+Pricing.jsx
+
+FAQ.jsx
+
+Contact.jsx
+
+Footer.jsx
+
+Navbar.jsx
+
+Button.jsx
+
+Card.jsx
+
+App.jsx
+
+---------------------------------------------------
+EXTRA DETAILS
+
+Sticky transparent navbar.
+
+Animated mobile menu.
+
+Back-to-top button.
+
+Gradient buttons.
+
+Noise texture overlay.
+
+Custom scrollbar.
+
+Beautiful loading spinner.
+
+404 page.
+
+Custom favicon.
+
+Professional code comments.
+
+Clean reusable code.
+
+Do NOT generate placeholder-looking websites.
+
+The design should resemble a premium SaaS agency built in 2026 and be suitable for an internship portfolio.

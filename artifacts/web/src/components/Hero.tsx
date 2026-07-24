@@ -1,51 +1,69 @@
-import { motion } from 'framer-motion';
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ArrowDown, ArrowRight, Menu, X, Play, Sparkles, TrendingUp, MousePointer2 } from 'lucide-react';
+import { useState } from 'react';
+
+const links = [
+  ['Services', '#services'],
+  ['Work', '#work'],
+  ['About', '#why'],
+  ['Pricing', '#pricing'],
+  ['Contact', '#contact'],
+];
 
 export function Hero() {
-  return (
-    <section id="home" className="relative min-h-[760px] overflow-hidden bg-[var(--np-ink)] text-[var(--np-paper)]">
-      <div className="absolute inset-0 opacity-20 np-grid" />
-      <div className="absolute -right-40 top-24 h-[520px] w-[520px] rounded-full bg-[var(--np-sky)]/20 blur-3xl" />
-      <div className="mx-auto flex min-h-[760px] max-w-[1440px] flex-col justify-between px-5 pb-14 pt-7 md:px-10 lg:px-16">
-        <nav className="relative z-10 flex items-center justify-between" aria-label="Main navigation">
-          <a href="#home" data-testid="link-logo" className="np-outline-focus flex items-center gap-3 rounded text-sm font-bold tracking-tight">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-[var(--np-lime)] text-[var(--np-ink)]">N</span>
-            <span>NorthPeak<span className="text-[var(--np-lime)]">.</span></span>
-          </a>
-          <div className="hidden items-center gap-8 text-sm text-[var(--np-paper)]/70 md:flex">
-            <a data-testid="link-services" className="np-outline-focus rounded hover:text-[var(--np-lime)]" href="#services">Services</a>
-            <a data-testid="link-work" className="np-outline-focus rounded hover:text-[var(--np-lime)]" href="#work">Why us</a>
-            <a data-testid="link-pricing" className="np-outline-focus rounded hover:text-[var(--np-lime)]" href="#pricing">Pricing</a>
-            <a data-testid="link-contact" className="np-outline-focus rounded hover:text-[var(--np-lime)]" href="#contact">Contact</a>
-          </div>
-          <a href="#contact" data-testid="link-nav-cta" className="np-outline-focus rounded-full border border-[var(--np-paper)]/30 px-4 py-2 text-xs font-bold hover:border-[var(--np-lime)] hover:text-[var(--np-lime)]">Let&apos;s talk <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" /></a>
-        </nav>
+  const [open, setOpen] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const px = useSpring(useTransform(x, [-800, 800], [-12, 12]), { stiffness: 80, damping: 25 });
+  const py = useSpring(useTransform(y, [-600, 600], [-10, 10]), { stiffness: 80, damping: 25 });
+  const handleMove = (event: React.MouseEvent<HTMLElement>) => {
+    x.set(event.clientX - window.innerWidth / 2);
+    y.set(event.clientY - window.innerHeight / 2);
+  };
 
-        <div className="relative z-10 grid items-end gap-12 pb-8 pt-24 lg:grid-cols-[1.1fr_.9fr] lg:gap-20">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
-            <p className="np-mono mb-7 flex items-center gap-3 text-[10px] uppercase tracking-[.28em] text-[var(--np-lime)]">
-              <span className="h-2 w-2 rounded-full bg-[var(--np-lime)]" /> Digital partners for the next chapter
-            </p>
-            <h1 className="np-display max-w-4xl text-[clamp(3.7rem,8.2vw,8.1rem)] font-semibold leading-[.88] tracking-[-.065em]">
-              We Build High-Converting Websites That Grow Your Business
-            </h1>
-            <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:items-center">
-              <p className="max-w-sm text-base leading-relaxed text-[var(--np-paper)]/65">Strategy, design, and engineering for ambitious founders who are ready to be impossible to ignore.</p>
-              <a data-testid="button-consultation" href="#contact" className="np-outline-focus group inline-flex w-fit items-center gap-3 rounded-full bg-[var(--np-lime)] px-5 py-3 text-sm font-bold text-[var(--np-ink)] transition-transform hover:-translate-y-1">Book a Free Consultation <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></a>
+  return (
+    <section id="home" onMouseMove={handleMove} className="relative min-h-[760px] overflow-hidden bg-[var(--np-bg)] text-[var(--np-white)]">
+      <div className="absolute inset-0 np-grid opacity-70" />
+      <div className="np-pulse pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-[var(--np-violet)]/20 blur-[110px]" />
+      <div className="np-pulse pointer-events-none absolute -right-24 top-44 h-[360px] w-[360px] rounded-full bg-[var(--np-purple)]/15 blur-[110px]" style={{ animationDelay: '1.5s' }} />
+      <div className="relative z-10 mx-auto flex min-h-[760px] max-w-[1240px] flex-col px-5 pb-8 pt-5 md:px-10 md:pt-7 lg:px-14">
+        <nav className="flex items-center justify-between" aria-label="Main navigation">
+          <a href="#home" data-testid="link-logo" className="np-outline-focus flex items-center gap-2.5 rounded-lg text-sm font-bold tracking-[-.02em]">
+            <span className="np-logo-mark">N</span><span>NorthPeak <span className="text-[var(--np-purple)]">Digital</span></span>
+          </a>
+          <div className="hidden items-center gap-7 text-xs text-[var(--np-slate)] lg:flex">
+            {links.map(([label, href]) => <a key={href} data-testid={`link-nav-${label.toLowerCase()}`} className="np-outline-focus rounded-md transition-colors hover:text-[var(--np-white)]" href={href}>{label}</a>)}
+          </div>
+          <div className="flex items-center gap-3">
+            <a href="#contact" data-testid="link-nav-cta" className="np-outline-focus hidden rounded-full bg-[var(--np-white)] px-4 py-2.5 text-xs font-bold text-[var(--np-bg)] transition-transform hover:-translate-y-0.5 sm:block">Let&apos;s talk <ArrowRight className="ml-1 inline h-3.5 w-3.5" /></a>
+            <button type="button" data-testid="button-mobile-menu" aria-label={open ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={open} onClick={() => setOpen(!open)} className="np-outline-focus rounded-lg border border-[var(--np-line)] p-2.5 lg:hidden">{open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}</button>
+          </div>
+        </nav>
+        <div className={`absolute left-5 right-5 top-20 z-20 origin-top rounded-2xl border border-[var(--np-line)] bg-[var(--np-surface)]/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden ${open ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'}`}>
+          {links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)} data-testid={`link-mobile-${label.toLowerCase()}`} className="block border-b border-[var(--np-soft-line)] px-3 py-3.5 text-sm text-[var(--np-slate)] last:border-0 hover:text-[var(--np-white)]">{label}</a>)}
+        </div>
+
+        <div className="grid flex-1 items-center gap-12 pb-14 pt-24 lg:grid-cols-[1.04fr_.96fr] lg:gap-10 lg:pt-28">
+          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+            <p className="np-eyebrow mb-6 flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[var(--np-violet)]" /> Independent digital studio</p>
+            <h1 className="np-display max-w-3xl text-[clamp(3.25rem,7vw,6.9rem)] font-extrabold leading-[.93] tracking-[-.075em]">Websites That Feel <span className="np-gradient-text">Premium.</span><br />Performance That <span className="np-gradient-text">Converts.</span></h1>
+            <p className="mt-8 max-w-lg text-base leading-relaxed text-[var(--np-slate)] md:text-lg">We design and build high-performing digital experiences for ambitious brands ready to move with clarity.</p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a data-testid="button-book-call" href="#contact" className="np-outline-focus group inline-flex items-center justify-center gap-3 rounded-full bg-[var(--np-violet)] px-5 py-3.5 text-sm font-bold text-[var(--np-white)] shadow-[0_10px_30px_rgba(109,93,254,.25)] transition-transform hover:-translate-y-1">Book Strategy Call <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
+              <a data-testid="button-view-work" href="#work" className="np-outline-focus group inline-flex items-center justify-center gap-3 rounded-full border border-[var(--np-line)] px-5 py-3.5 text-sm font-bold text-[var(--np-white)] transition-colors hover:border-[var(--np-purple)] hover:bg-white/[.04]">View Our Work <Play className="h-3.5 w-3.5 fill-current" /></a>
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: .9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: 1 }} className="relative mx-auto aspect-square w-full max-w-[470px]">
-            <div className="absolute inset-[12%] rounded-[38%_62%_54%_46%/42%_39%_61%_58%] bg-[var(--np-sky)] mix-blend-screen motion-safe:animate-[morph_10s_ease-in-out_infinite]" />
-            <div className="absolute inset-[22%] rounded-[45%_55%_40%_60%/56%_45%_55%_44%] bg-[var(--np-coral)] mix-blend-multiply motion-safe:animate-[morph_8s_ease-in-out_infinite_reverse]" />
-            <div className="absolute inset-[32%] rounded-full border-[1.5px] border-[var(--np-paper)]/70 motion-safe:animate-[spin_18s_linear_infinite]" />
-            <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--np-lime)] shadow-[0_0_0_12px_rgba(215,239,100,.18)]" />
-            <span className="np-mono absolute right-0 top-[18%] text-[10px] text-[var(--np-paper)]/60">01 / 04</span>
-            <span className="np-mono absolute bottom-[15%] left-0 -rotate-90 text-[10px] uppercase tracking-[.28em] text-[var(--np-paper)]/60">Make it matter</span>
+          <motion.div style={{ x: px, y: py }} initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .9 }} className="relative mx-auto aspect-square w-full max-w-[490px]">
+            <div className="absolute inset-[12%] rounded-full border border-[var(--np-purple)]/25" />
+            <div className="absolute inset-[20%] rounded-full border border-dashed border-[var(--np-violet)]/30 motion-safe:animate-[spin_30s_linear_infinite]" />
+            <div className="absolute inset-[27%] rounded-[42%_58%_54%_46%/45%_38%_62%_55%] bg-gradient-to-br from-[var(--np-violet)]/80 via-[var(--np-purple)]/35 to-transparent blur-[2px] motion-safe:animate-[np-float_8s_ease-in-out_infinite]" />
+            <div className="absolute left-1/2 top-1/2 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-3xl border border-white/15 bg-white/[.08] shadow-[0_20px_60px_rgba(109,93,254,.4)] backdrop-blur-xl"><Sparkles className="h-8 w-8 text-[var(--np-white)]" /></div>
+            <div className="np-float absolute left-[2%] top-[20%] w-44 rounded-2xl border border-white/10 bg-[var(--np-surface)]/90 p-4 shadow-2xl backdrop-blur-xl" style={{ animationDelay: '-2s' }}><div className="flex items-center justify-between text-[10px] text-[var(--np-slate)]"><span>Conversion rate</span><TrendingUp className="h-3.5 w-3.5 text-[var(--np-purple)]" /></div><strong className="np-display mt-2 block text-2xl">+38.4%</strong><div className="mt-3 h-1 overflow-hidden rounded-full bg-white/10"><div className="h-full w-[78%] rounded-full bg-[var(--np-purple)]" /></div></div>
+            <div className="np-float absolute bottom-[14%] right-[-2%] flex items-center gap-3 rounded-2xl border border-white/10 bg-[var(--np-surface)]/90 px-4 py-3 shadow-2xl backdrop-blur-xl" style={{ animationDelay: '-4s' }}><span className="grid h-8 w-8 place-items-center rounded-xl bg-[var(--np-violet)]/20"><MousePointer2 className="h-4 w-4 text-[var(--np-purple)]" /></span><span><strong className="block text-xs">Experience, refined</strong><small className="text-[10px] text-[var(--np-slate)]">Built to be remembered</small></span></div>
           </motion.div>
         </div>
-        <a data-testid="link-scroll" href="#services" className="np-outline-focus relative z-10 flex w-fit items-center gap-2 text-xs text-[var(--np-paper)]/50 hover:text-[var(--np-lime)]"><ArrowDownRight className="h-4 w-4" /> Scroll to explore</a>
+        <a data-testid="link-scroll-indicator" href="#trusted" className="np-outline-focus flex w-fit items-center gap-3 rounded text-[10px] uppercase tracking-[.2em] text-[var(--np-slate)]"><span className="grid h-8 w-5 place-items-center rounded-full border border-[var(--np-line)]"><ArrowDown className="h-3 w-3 motion-safe:animate-bounce" /></span> Scroll to explore</a>
       </div>
-      <style>{`@keyframes morph { 0%,100%{transform:rotate(0deg) scale(1)} 50%{transform:rotate(18deg) scale(1.08)} }`}</style>
     </section>
   );
 }
