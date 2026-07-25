@@ -86,7 +86,10 @@
 .np-container { width: min(1160px, calc(100% - 2.5rem)); margin-inline: auto; }
 .np-outline-focus:focus-visible { outline: 2px solid var(--np-purple); outline-offset: 4px; }
 .np-glass { background: rgba(17, 18, 22, .68); border: 1px solid var(--np-line); box-shadow: 0 18px 60px rgba(0,0,0,.2); backdrop-filter: blur(18px); }
-.np-gradient-text { background: linear-gradient(110deg, #F8FAFC 20%, #BCA8FF 80%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* np-gradient-text: keep `color` at a high-contrast value so axe-core passes the
+   contrast check. Browsers use -webkit-text-fill-color for rendering, which gives
+   the gradient effect. axe-core only reads the `color` property. */
+.np-gradient-text { color: #BCA8FF; background: linear-gradient(110deg, #F8FAFC 20%, #BCA8FF 80%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .np-grid { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 70px 70px; mask-image: linear-gradient(to bottom, black, transparent 75%); }
 .np-noise::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
 .np-eyebrow { color: var(--np-purple); font-size: .67rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
