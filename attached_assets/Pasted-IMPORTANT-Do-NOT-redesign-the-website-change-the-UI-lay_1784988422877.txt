@@ -1,0 +1,72 @@
+IMPORTANT: Do NOT redesign the website, change the UI, layout, typography, colors, spacing, animations, or content.
+
+Your ONLY goal is to optimize the existing React + Vite + Tailwind CSS project to achieve Google Lighthouse scores of:
+
+- Performance: 90+
+- Accessibility: 95+
+- Best Practices: 100
+- SEO: 100
+
+Current Scores:
+Performance: 70
+Accessibility: 92
+Best Practices: 100
+SEO: 100
+
+Apply production-grade optimizations only.
+
+PERFORMANCE
+- Remove all unused JavaScript and CSS.
+- Use React.lazy() and Suspense for non-critical components.
+- Lazy load sections below the fold.
+- Lazy load all images outside the viewport.
+- Convert images to WebP or AVIF.
+- Compress large images.
+- Add explicit width and height attributes to every image.
+- Preload only the hero image.
+- Optimize Largest Contentful Paint (LCP).
+- Optimize First Contentful Paint (FCP).
+- Reduce Total Blocking Time (TBT).
+- Reduce bundle size using tree-shaking.
+- Remove unnecessary dependencies.
+- Import only required icons instead of entire icon libraries.
+- Replace heavy libraries with lighter alternatives where possible.
+- Reduce unnecessary React re-renders using React.memo(), useMemo(), and useCallback() where appropriate.
+- Minimize DOM size.
+- Remove render-blocking resources.
+- Preload critical CSS only.
+- Use font-display: swap.
+- Remove unused font weights and font families.
+- Minify CSS and JavaScript.
+- Ensure assets are cached efficiently.
+- Defer all non-critical JavaScript.
+- Avoid unnecessary animations on initial page load.
+- Trigger Framer Motion animations only when elements enter the viewport.
+- Respect prefers-reduced-motion.
+
+ACCESSIBILITY
+- Fix all Lighthouse accessibility warnings.
+- Improve color contrast.
+- Add missing labels and aria-labels.
+- Remove invalid ARIA attributes.
+- Ensure keyboard navigation works correctly.
+- Add visible focus indicators.
+- Maintain semantic HTML.
+
+SEO
+- Preserve the existing SEO score of 100.
+- Keep all meta tags and semantic structure intact.
+
+IMPORTANT
+- Do not remove any sections.
+- Do not simplify the UI.
+- Do not change the design.
+- Do not change any text.
+- Preserve responsiveness.
+- Preserve the premium look.
+
+After making all optimizations:
+1. Explain every optimization.
+2. Show the estimated Lighthouse improvements.
+3. Ensure the application builds successfully without errors.
+4. Verify the production build before finishing.
