@@ -57,7 +57,7 @@ export function Hero() {
         </div>
 
         <div className="grid flex-1 items-center gap-12 pb-14 pt-24 lg:grid-cols-[1.04fr_.96fr] lg:gap-10 lg:pt-28">
-          <m.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+          <m.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .45 }}>
             <p className="np-eyebrow mb-6 flex items-center gap-2"><span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--np-violet)]" /> Independent digital studio</p>
             <h1 className="np-display max-w-3xl text-[clamp(3.25rem,7vw,6.9rem)] font-extrabold leading-[.93] tracking-[-.075em]">Websites That Feel <span className="np-gradient-text">Premium.</span><br />Performance That <span className="np-gradient-text">Converts.</span></h1>
             <p className="mt-8 max-w-lg text-base leading-relaxed text-[var(--np-slate)] md:text-lg">We design and build high-performing digital experiences for ambitious brands ready to move with clarity.</p>
@@ -72,7 +72,7 @@ export function Hero() {
             style={prefersReducedMotion ? undefined : { x: px, y: py }}
             initial={{ opacity: 0, scale: .92 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: .25, duration: .9 }}
+            transition={{ delay: .1, duration: .5 }}
             className="relative mx-auto aspect-square w-full max-w-[490px]"
           >
             <div className="absolute inset-[12%] rounded-full border border-[var(--np-purple)]/25" />

@@ -1,7 +1,55 @@
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
+
+/**
+ * Post-build plugin: injects <link rel="preload"> for above-fold woff2 fonts.
+ * Preloading Inter 400 (body) and Manrope 800 (hero heading) means the browser
+ * fetches them in parallel with CSS during HTML parsing, eliminating the
+ * Font-flash window that inflates Speed Index.
+ */
+function npFontPreloadPlugin(): Plugin {
+  let base = '/';
+  let outDir = '';
+
+  return {
+    name: 'np-font-preload',
+    apply: 'build',
+    configResolved(config) {
+      base = config.base || '/';
+      outDir = config.build.outDir as string;
+    },
+    async closeBundle() {
+      const { promises: fsp } = await import('node:fs');
+      const htmlPath = path.join(outDir, 'index.html');
+      let html = await fsp.readFile(htmlPath, 'utf-8');
+
+      const assetsDir = path.join(outDir, 'assets');
+      const files = await fsp.readdir(assetsDir);
+
+      // Only preload the two fonts rendered above the fold
+      const criticalPatterns = [
+        /^inter-latin-400-normal-.+\.woff2$/,   // body / nav text
+        /^manrope-latin-800-normal-.+\.woff2$/, // hero H1 (font-extrabold)
+      ];
+
+      const preloads = files
+        .filter(f => criticalPatterns.some(re => re.test(f)))
+        .map(
+          f =>
+            `  <link rel="preload" as="font" type="font/woff2" crossorigin href="${base}assets/${f}">`,
+        )
+        .join('\n');
+
+      if (preloads) {
+        html = html.replace('</head>', `${preloads}\n</head>`);
+        await fsp.writeFile(htmlPath, html);
+        console.log('[np-font-preload] injected font preload hints');
+      }
+    },
+  };
+}
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
@@ -33,6 +81,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
+    npFontPreloadPlugin(),
     ...(process.env.NODE_ENV !== 'production' &&
     process.env.REPL_ID !== undefined
       ? [
