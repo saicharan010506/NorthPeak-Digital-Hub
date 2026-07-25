@@ -49,7 +49,7 @@ export function Hero() {
         </nav>
         <div
           className={`absolute left-5 right-5 top-20 z-20 origin-top rounded-2xl border border-[var(--np-line)] bg-[var(--np-surface)]/95 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden ${open ? 'scale-y-100 opacity-100' : 'pointer-events-none scale-y-95 opacity-0'}`}
-          aria-hidden={!open}
+          aria-hidden={open ? undefined : true}
         >
           {links.map(([label, href]) => (
             <a key={href} href={href} onClick={() => setOpen(false)} data-testid={`link-mobile-${label.toLowerCase()}`} className="block border-b border-[var(--np-soft-line)] px-3 py-3.5 text-sm text-[var(--np-slate)] last:border-0 hover:text-[var(--np-white)]">{label}</a>
